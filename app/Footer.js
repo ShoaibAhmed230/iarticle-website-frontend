@@ -1,4 +1,6 @@
 import React from 'react'
+import Link from 'next/link'
+
 
 const footer = () => {
   return (
@@ -18,16 +20,16 @@ const footer = () => {
       <h4 className="text-lg font-semibold mb-3">Quick Links</h4>
       <ul className="space-y-2">
         <li>
-          <a href="/" className="hover:text-white transition">Home</a>
+          <Link href="/" className="hover:text-white transition">Home</Link>
         </li>
         <li>
-          <a href="/blog" className="hover:text-gray-700 transition">Article</a>
+          <Link href="/blog" className="hover:text-gray-700 transition">Article</Link>
         </li>
         <li>
-          <a href="/about" className="hover:text-gray-700 transition">About</a>
+          <Link href="/about" className="hover:text-gray-700 transition">About</Link>
         </li>
         <li>
-          <a href="/contact" className="hover:text-gray-700 transition">Contact</a>
+          <Link href="/contact" className="hover:text-gray-700 transition">Contact</Link>
         </li>
       </ul>
     </div>
@@ -37,13 +39,13 @@ const footer = () => {
       <h4 className="text-lg font-semibold mb-3">Resources</h4>
       <ul className="space-y-2">
         <li>
-          <a href="#" className="hover:text-gray-700 transition">Privacy Policy</a>
+          <Link href="#" className="hover:text-gray-700 transition">Privacy Policy</Link>
         </li>
         <li>
-          <a href="#" className="hover:text-gray-700 transition">Terms of Service</a>
+          <Link href="#" className="hover:text-gray-700 transition">Terms of Service</Link>
         </li>
         <li>
-          <a href="#" className="hover:text-gray-700 transition">Support</a>
+          <Link href="#" className="hover:text-gray-700 transition">Support</Link>
         </li>
       </ul>
     </div>
@@ -52,18 +54,18 @@ const footer = () => {
     <div>
       <h4 className="text-lg font-semibold mb-3">Follow Us</h4>
       <div className="flex space-x-4">
-        <a href="#" className="hover:text-gray-700 transition">
+        <Link href="#" className="hover:text-gray-700 transition">
           <i className="fab fa-facebook-f"></i>
-        </a>
-        <a href="#" className="hover:text-gray-700 transition">
+        </Link>
+        <Link href="#" className="hover:text-gray-700 transition">
           <i className="fab fa-twitter"></i>
-        </a>
-        <a href="#" className="hover:text-gray-700 transition">
+        </Link>
+        <Link href="#" className="hover:text-gray-700 transition">
           <i className="fab fa-instagram"></i>
-        </a>
-        <a href="#" className="hover:text-gray-700 transition">
+        </Link>
+        <Link href="#" className="hover:text-gray-700 transition">
           <i className="fab fa-linkedin-in"></i>
-        </a>
+        </Link>
       </div>
     </div>
   </div>
