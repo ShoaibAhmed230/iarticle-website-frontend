@@ -2,14 +2,18 @@
 
 import { useEffect, useState } from 'react'
 
-export default function CommentList({ articleId }) {
+// const API_BASE_URL = process.env.BACK_API
+const API_BASE_URL = process.env.NEXT_PUBLIC_BACK_API
+
+
+export default function CommentList({ articleId, refreshKey  }) {
   const [comments, setComments] = useState([])
 
   useEffect(() => {
     const fetchComments = async () => {
       try {
         const res = await fetch(
-          `http://localhost:1337/api/comments?filters[article][id][$eq]=${articleId}`
+         `${API_BASE_URL}/api/comments?filters[article][id][$eq]=${articleId}&populate=*`
         )
         const json = await res.json()
         console.log('✅ Comments:', json)
@@ -18,9 +22,10 @@ export default function CommentList({ articleId }) {
         console.error('❌ Failed to fetch comments:', err)
       }
     }
+    
 
     if (articleId) fetchComments()
-  }, [articleId])
+  }, [articleId, refreshKey])
 
   return (
     <div className="mt-6">

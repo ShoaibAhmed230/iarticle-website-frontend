@@ -2,6 +2,10 @@
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 
+// const API_BASE_URL = process.env.BACK_API
+const API_BASE_URL = process.env.NEXT_PUBLIC_BACK_API
+
+
 const Blog = () => {
   const [articles, setArticles] = useState([])
   const [searchTerm, setSearchTerm] = useState('')
@@ -11,7 +15,7 @@ const Blog = () => {
   useEffect(() => {
     const fetchArticles = async () => {
       try {
-        const res = await fetch("http://localhost:1337/api/articles?populate=*", {
+        const res = await fetch(API_BASE_URL+"/api/articles?populate[category][populate]=*&populate[author][populate]=*&populate=cover  ", {
           cache: 'no-store'
         })
         const data = await res.json()
@@ -96,7 +100,7 @@ const Blog = () => {
                 {/* Cover Image */}
                 {article.cover?.url && (
                   <img
-                    src={`http://localhost:1337${article.cover.url}`}
+                    src={article.cover.url}
                     alt={article.title}
                     className="w-full h-40 object-cover rounded-lg mb-3"
                   />

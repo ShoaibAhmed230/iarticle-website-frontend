@@ -8,14 +8,16 @@ import 'swiper/css/navigation'
 import TypedText from './blog/Components/TypedText'
 
 
+const API_BASE_URL = process.env.NEXT_PUBLIC_BACK_API
 
+console.log(API_BASE_URL, 'the based url')
 const Blog = () => {
   const [articles, setArticles] = useState([])
 
   useEffect(() => {
     const fetchArticles = async () => {
       try {
-        const res = await fetch('http://localhost:1337/api/articles?populate=*', {
+        const res = await fetch(`${API_BASE_URL}/api/articles?populate=*`, {
           cache: 'no-store',
         })
         const data = await res.json()
@@ -30,7 +32,7 @@ const Blog = () => {
   return (
     <div className="bg-gray-50 min-h-screen">
       {/* Hero Section */}
- <section className="h-80 p-10 sm:h-96 relative flex flex-col justify-center items-center text-white bg-[url('http://localhost:1337/uploads/pexels_thepaintedsquare_593322_039d361278.jpg')] bg-no-repeat bg-cover">
+ <section className="h-80 p-10 sm:h-96 relative flex flex-col justify-center items-center text-white bg-[url('https://res.cloudinary.com/dso02dmas/image/upload/v1751752579/pexels_thepaintedsquare_593322_bd22d3f97d.jpg')] bg-no-repeat bg-cover">
   {/* Gradient Black Overlay */}
   <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-black/30"></div>
 
@@ -77,11 +79,14 @@ const Blog = () => {
                   <Link href={`/blogpost/${article.slug}`} className="block">
                     {article.cover?.url && (
                       <img
-                        src={`http://localhost:1337${article.cover.url}`}
+                        src={article.cover.url}
+                        
                         alt={article.title}
                         className="w-full h-40 object-cover rounded-t-xl"
-                      />
-                    )}
+                        />
+                      )}
+                      <span>{console.log(article)};
+                      </span>
                     <div className="p-4">
                       <h3 className="text-lg font-semibold text-gray-800 mb-1">
                         {article.title}

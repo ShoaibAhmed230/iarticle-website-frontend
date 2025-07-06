@@ -1,6 +1,10 @@
 'use client'
 import { useState } from 'react'
 
+
+const API_BASE_URL = process.env.NEXT_PUBLIC_BACK_API
+
+
 export default function CommentForm({ articleId, onCommentAdded }) {
   const [author, setAuthor] = useState('')
   const [content, setContent] = useState('')
@@ -9,9 +13,11 @@ export default function CommentForm({ articleId, onCommentAdded }) {
   const handleSubmit = async (e) => {
     e.preventDefault()
     setSubmitting(true)
+    console.log('handleSubmit');
+    
 
     try {
-      await fetch('http://localhost:1337/api/comments', {
+      await fetch(API_BASE_URL+'/api/comments', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
